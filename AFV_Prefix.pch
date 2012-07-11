@@ -1,0 +1,35 @@
+//
+// Prefix header for all source files of the 'AFV' target in the 'AFV' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+#import "KalturaClient.h"
+#import "Client.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "ASIHTTPRequest.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "Utils.h"
+#import <CoreMedia/CoreMedia.h>
+#import <AVFoundation/AVFoundation.h>
+#import "KalturaThumbView.h"
+
+
+#define favorites_file	@"favorites.plist"
+
+
+#ifdef DEBUG
+#define UGVID  @"711390"
+#else
+#define UGVID  @"336124"
+#endif 
+
+
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog((@"%s - Line: %d " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define DLog(...)
+#endif
