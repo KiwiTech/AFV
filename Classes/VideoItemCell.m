@@ -14,6 +14,7 @@
 @synthesize titleLabel;
 @synthesize descriptionLabel;
 @synthesize cachedImageView;
+@synthesize  webView;
 @synthesize playImageView;
 @synthesize delegate = _delegate;
 
@@ -48,6 +49,7 @@
 	[titleLabel release];
 	[descriptionLabel release];
 	[cachedImageView release];
+    [webView release];
 	[playImageView release];
 	
     [super dealloc];

@@ -32,7 +32,7 @@
 @property(nonatomic, retain) IBOutlet UIButton* favoriteButton;
 
 @property(nonatomic, retain) VideoItem* videoItem;
-
+@property (nonatomic, retain) IBOutlet UIWebView*    webView;
 
 
 -(IBAction)playButtonAction:(id)sender;

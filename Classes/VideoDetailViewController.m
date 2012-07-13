@@ -22,6 +22,7 @@
 @synthesize favoriteButton;
 
 @synthesize videoItem;
+@synthesize webView;
 
 
 
@@ -31,6 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    for (id view in [webView subviews]) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            [(UIScrollView*)view setBounces:FALSE];
+        }
+    }
+    
 	self.navigationItem.title = @"Video Details";
 	self.titleLabel.text = videoItem.title;
 	self.descriptonLabel.text = videoItem.description;
@@ -38,6 +45,9 @@
 	self.thumbnailImageView.contentMode = UIViewContentModeScaleToFill;
 	self.thumbnailImageView.loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 	[self.thumbnailImageView loadCachedImageWithImageUrl:videoItem.thumbnailUrl usingMaxImageSize:default_image_size];
+    
+    NSString *html = [NSString stringWithFormat:embedHTML, videoItem.videoUrl, webView.frame.size.width, webView.frame.size.height];
+    [webView loadHTMLString:html baseURL:nil];
 	
 }
 
@@ -70,7 +80,7 @@
 	{
 		
 		NSArray* actionLinks = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:
-															   @"Watch this video",@"name",videoItem.ABCSiteURL,@"link", nil], nil];
+															   @"Watch this video",@"name",videoItem.videoUrl,@"link", nil], nil];
 		
 		SBJSON *jsonWriter = [SBJSON new];
 		NSString *actionLinksStr = [jsonWriter stringWithObject:actionLinks];
@@ -80,7 +90,7 @@
 									   @"What's on your mind?",  @"user_message_prompt",
 									   actionLinksStr, @"actions",
 									   [NSString stringWithFormat:@"<b>%@</b>", videoItem.title], @"name",
-									   videoItem.ABCSiteURL, @"link",
+									   videoItem.videoUrl, @"link",
 									   [NSString stringWithFormat:@"%@", videoItem.description], @"description",
 									   videoItem.thumbnailUrl, @"picture",
 									   nil];
@@ -137,7 +147,7 @@
 	[playButton release];
 	[facebookButton release];
 	[favoriteButton release];
-	
+	[webView release];
 	[videoItem release];
 }
 

@@ -10,7 +10,7 @@
 #import "GenericXMLParser.h"
 #import "LoadingCell.h"
 #import "ChannelViewController.h"
-
+#import "SBJSON.h"
 
 @interface ChannelsViewController()
 
@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.channels = [[NSMutableArray alloc] init];
+    
 	if(channels.count == 0)
 	{
 		// Load the data
@@ -76,15 +78,40 @@
 	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	
 	@synchronized(self)
-	{
-		
-		NSURL* url = [NSURL URLWithString:@"http://cdn.abc.go.com/ugv/filters?showKey=SH000168930000"];
-		GenericXMLParser* parser = [[GenericXMLParser alloc] initWithURL:url ignoring:nil treatAsProperty:nil];
-		
+	{		
 		@try {
-			self.channels = [[[[parser parse] objectForKey:CHILDREN_KEY] objectAtIndex:0] objectForKey:CHILDREN_KEY];
+			
+            NSMutableArray* videoFeedArray = [[NSMutableArray alloc] init];
+            
+            NSString* searchString = @"http://gdata.youtube.com/feeds/api/users/afvofficial/playlists?alt=json&orderby=published&start-index=1&max-results=50&v=2";
+            
+            NSString* escapedUrlString =[searchString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+			NSURL *feedURL = [[NSURL alloc] initWithString:escapedUrlString];
+            
+             NSError *error;
+            NSString *responseString = [NSString stringWithContentsOfURL:feedURL encoding:NSStringEncodingConversionAllowLossy error:nil];
 
+            SBJSON *json = [[SBJSON new] autorelease];
+            NSDictionary *dataDictionary = [json objectWithString:responseString error:&error];
+            [videoFeedArray addObjectsFromArray:[[dataDictionary objectForKey:@"feed"] objectForKey:@"entry"]];
+            
+            for(NSInteger i=0;i<[videoFeedArray count];i++) {
+               
+                NSDictionary *videoDict = [videoFeedArray objectAtIndex:i];
+                NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+                
+                [dict setValue:[[videoDict objectForKey:@"title"] objectForKey:@"$t"] forKey:TEXT_KEY];
+                [dict setValue:[[videoDict objectForKey:@"yt$playlistId"] objectForKey:@"$t"] forKey:@"id"];
+                
+                [channels addObject:dict];
+                [dict release];
+            }
+            
+            [videoFeedArray release];
+			// Done downlaoding, update the UI
 			[self performSelectorOnMainThread:@selector(asyncDataReady) withObject:nil waitUntilDone:NO];
+			
 		}
 		@catch (NSException * e) {
 			
@@ -99,12 +126,7 @@
 			[alert release];		
 			
 		}
-		@finally {
-			[parser release];
-		}
-		
-
-	}
+    }
 	
 	[pool release];
 	
@@ -193,6 +215,7 @@
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:channelCellIdentifier] autorelease];
 			cell.textLabel.textColor = [UIColor whiteColor];
 			cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:17];
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
 		}
 		
 		

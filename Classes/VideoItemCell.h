@@ -17,6 +17,7 @@
 	UILabel* titleLabel;
 	UILabel* descriptionLabel;
 	CachedImageView* cachedImageView;
+    
 	UIImageView* playImageView;
 	
 	id<VideoItemCellDelegate> _delegate;
@@ -25,6 +26,7 @@
 @property(nonatomic, retain) IBOutlet UILabel* titleLabel;
 @property(nonatomic, retain) IBOutlet UILabel* descriptionLabel;
 @property(nonatomic, retain) IBOutlet CachedImageView* cachedImageView;
+@property (nonatomic, retain) IBOutlet UIWebView*      webView;
 @property(nonatomic, retain) IBOutlet UIImageView* playImageView;
 
 @property(assign) id<VideoItemCellDelegate> delegate;

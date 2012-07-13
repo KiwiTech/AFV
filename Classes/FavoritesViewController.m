@@ -116,20 +116,26 @@
 			for (id oneObject in nib) {
 				if ([oneObject isKindOfClass:[VideoItemCell class]]) {
 					cell = (VideoItemCell*)oneObject;
-					cell.cachedImageView.delegate = cell;
+					//cell.cachedWebView.delegate = cell;
 					cell.delegate = self;
 				}
 			}
 			
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		}
 		
 		
 		VideoItem* item = [self.items objectAtIndex:indexPath.row];
 		cell.titleLabel.text = item.title;
 		cell.descriptionLabel.text = item.description;
-		[cell.cachedImageView reset];
-		cell.cachedImageView.fadeInOnUpdate = NO;
-		[cell.cachedImageView loadCachedImageWithImageUrl:item.thumbnailUrl usingMaxImageSize:CGSizeMake(96, 72)];
+        NSString *html = [NSString stringWithFormat:embedHTML, item.videoUrl, cell.webView.frame.size.width, cell.frame.size.height];
+        [cell.webView loadHTMLString:html baseURL:nil];
+        
+
+        
+	//	[cell.cachedWebView reset];
+	//	cell.cachedWebView.fadeInOnUpdate = NO;
+	//	[cell.cachedImageView loadCachedImageWithImageUrl:item.thumbnailUrl usingMaxImageSize:CGSizeMake(96, 72)];
 		
 		return cell;
 		
@@ -162,13 +168,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if(items.count > 0)
-	{
-		VideoItem* item = [self.items objectAtIndex:indexPath.row];
-		MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];
-		[self presentMoviePlayerViewControllerAnimated:moviePlayer];
-		[moviePlayer release];
-	}
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//	if(items.count > 0)
+//	{
+//		VideoItem* item = [self.items objectAtIndex:indexPath.row];
+//		MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];
+//		[self presentMoviePlayerViewControllerAnimated:moviePlayer];
+//		[moviePlayer release];
+//	}
 	
 }
 

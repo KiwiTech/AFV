@@ -47,9 +47,9 @@ static FavoritesDB *sharedFavoritesDBInstance = nil;
 						[videoDic setObject:videoItem.title forKey:@"title"];
 						[videoDic setObject:videoItem.description forKey:@"description"];
 						[videoDic setObject:videoItem.videoUrl forKey:@"videoUrl"];
-						[videoDic setObject:videoItem.thumbnailUrl forKey:@"thumbnailUrl"];
+						//[videoDic setObject:videoItem.thumbnailUrl forKey:@"thumbnailUrl"];
 						[videoDic setObject:videoItem.favoriteTimeStamp forKey:@"saveTimeStamp"];
-						[videoDic setObject:videoItem.ABCSiteURL forKey:@"ABCSiteURL"];
+					//	[videoDic setObject:videoItem.ABCSiteURL forKey:@"ABCSiteURL"];
 						
 						[savedDic setObject:videoDic forKey:key];
 						

@@ -12,6 +12,7 @@
 #import "MoviePlayerViewController.h"
 #import "VideoItem.h"
 #import "VideoDetailViewController.h"
+#import "SBJSON.h"
 
 #define load_increments		15
 
@@ -35,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.items = [[NSMutableArray alloc] init];
 	
 	if(items.count == 0)
 	{
@@ -102,87 +104,43 @@
 	
 	@synchronized(self)
 	{
-		
-		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cdn.abc.go.com/ugv/mdf?ugvVideoId=336124&fv=%@&start=%d&limit=%d&ff=m3u8", channelID, self.items.count + errorStartOffset,load_increments]];
-		
-		NSArray* ignoreList = [NSArray arrayWithObjects:
-							   @"/rss/channel/title",
-							   @"/rss/channel/description",
-							   @"/rss/channel/lastBuildDate",
-							   @"/rss/channel/link",
-							   @"/rss/channel/item/title",
-							   @"/rss/channel/item/guid",
-							   @"/rss/channel/item/media:content/media:rating",
-							   @"/rss/channel/item/media:content/dcterms:valid",
-							   nil];
-		
-		NSArray* treatAsAttributeList = [NSArray arrayWithObjects:
-										 @"/rss/channel/item/link",
-										 nil];
-		
-		GenericXMLParser* parser = [[GenericXMLParser alloc] initWithURL:url ignoring:ignoreList treatAsProperty:treatAsAttributeList];
-		
 		@try {
 
-			NSArray* videoItems = [[[[parser parse] objectForKey:CHILDREN_KEY] objectAtIndex:0] objectForKey:CHILDREN_KEY];
-			
-			// Couldn't load more items
-			if (self.items.count > 0 && videoItems.count == 0)
-			{
-				// if we are part of a visible chain
-				if ([self parentViewController])
-				{
-					
-					UIAlertView *alert = [[UIAlertView alloc]
-										  initWithTitle:@"Connection Error"
-										  message:@"Additional content for this channel could not be retrieved at this time. Please try again later." 
-										  delegate:nil
-										  cancelButtonTitle:@"OK"
-										  otherButtonTitles:nil];
-					
-					[alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:NO];
-					[alert release];		
-				}
-			}
-			
-			
-			if(!items)
-				self.items = [NSMutableArray arrayWithCapacity:videoItems.count];
-			
-			// generate the data objects
-			for(NSDictionary* videoDic in videoItems)
-			{
-				VideoItem* item = [[VideoItem alloc] init];
-				
-				item.ABCSiteURL = [videoDic valueForKey:@"link"];
+            NSMutableArray* videoFeedArray = [[NSMutableArray alloc] init];
+            
+            NSString *urlString = [NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/playlists/%@?alt=json",channelID];
+            
+            NSString *escapedUrlString =[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            NSURL *feedURL = [[NSURL alloc] initWithString:escapedUrlString];
+            
+            NSString *responseString = [NSString stringWithContentsOfURL:feedURL encoding:NSStringEncodingConversionAllowLossy error:nil];
+            NSError *error;
+            SBJSON *json = [[SBJSON new] autorelease];
+            NSDictionary *dataDictionary = [json objectWithString:responseString error:&error];
+            [videoFeedArray addObjectsFromArray:[[dataDictionary objectForKey:@"feed"] objectForKey:@"entry"]];
 
-				NSDictionary* mediaContent = [[videoDic objectForKey:CHILDREN_KEY] objectAtIndex:0];
-				if([[mediaContent valueForKey:@"warning"] isEqualToString:@"TRANSCODE_FAILURE"])
-				{
-					videoCount--;
-					errorStartOffset++;
-					continue;
-				}
-
-				item.videoUrl = [[mediaContent valueForKey:@"url"] stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
-				
-				for(NSDictionary* dic in [mediaContent objectForKey:CHILDREN_KEY])
-				{
-					if([[dic valueForKey:ELEMENT_KEY] isEqualToString:@"media:title"])
-						item.title = [dic valueForKey:TEXT_KEY];
-					
-					else if([[dic valueForKey:ELEMENT_KEY] isEqualToString:@"media:description"])
-						item.description = [dic valueForKey:TEXT_KEY];
-					
-					else if([[dic valueForKey:ELEMENT_KEY] isEqualToString:@"media:thumbnail"])
-						item.thumbnailUrl= [[dic valueForKey:@"url"] stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
-				}
-				
-				[items addObject:item];
-				[item release];
-			}
-			
-		}
+            for(NSInteger i=0;i<[videoFeedArray count];i++) {
+                
+                      
+                NSDictionary *videoDict = [videoFeedArray objectAtIndex:i];
+                
+                VideoItem* videoItem = [[VideoItem alloc] init];
+                videoItem.title = [[[videoDict objectForKey:@"media$group"] objectForKey:@"media$title"] objectForKey:@"$t"];
+                videoItem.videoUrl = [[[videoDict objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
+                NSString *tagString = [[[videoDict objectForKey:@"media$group"] objectForKey:@"media$description"] objectForKey:@"$t"];
+                tagString = [tagString stringByReplacingOccurrencesOfString:@"\n\n" withString:@" "];
+                videoItem.description = [tagString stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+                
+                [items addObject:videoItem];
+                [videoItem release];
+            }
+            
+            [videoFeedArray release];
+           
+            // Done downlaoding, update the UI
+			[self performSelectorOnMainThread:@selector(asyncDataReady) withObject:nil waitUntilDone:NO];
+        }
 		@catch (NSException * e) {
 			
 			// if we are part of a visible chain
@@ -204,7 +162,6 @@
 		@finally {
 			
 			[self performSelectorOnMainThread:@selector(asyncDataReady) withObject:nil waitUntilDone:NO];
-			[parser release];
 		}
 		
 		
@@ -329,7 +286,6 @@
 				for (id oneObject in nib) {
 					if ([oneObject isKindOfClass:[VideoItemCell class]]) {
 						cell = (VideoItemCell*)oneObject;
-						cell.cachedImageView.delegate = cell;
 						cell.delegate = self;
 					}
 				}
@@ -340,11 +296,8 @@
 			VideoItem* item = [self.items objectAtIndex:indexPath.row];
 			cell.titleLabel.text = item.title;
 			cell.descriptionLabel.text = item.description;
-			[cell.cachedImageView reset];
-			cell.cachedImageView.fadeInOnUpdate = NO;
-			[cell.cachedImageView loadCachedImageWithImageUrl:item.thumbnailUrl usingMaxImageSize:CGSizeMake(96, 72)];
-			
-			
+            NSString *html = [NSString stringWithFormat:embedHTML, item.videoUrl, cell.webView.frame.size.width, cell.frame.size.height];
+            [cell.webView loadHTMLString:html baseURL:nil];
 			
 			return cell;
 		}
@@ -404,10 +357,11 @@
 		}
 		else
 		{
-			VideoItem* item = [self.items objectAtIndex:indexPath.row];
-			MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];
-			[self presentMoviePlayerViewControllerAnimated:moviePlayer];
-			[moviePlayer release];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//			VideoItem* item = [self.items objectAtIndex:indexPath.row];
+//			MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];
+//			[self presentMoviePlayerViewControllerAnimated:moviePlayer];
+//			[moviePlayer release];
 		}
 	}
 	

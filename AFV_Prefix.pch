@@ -19,7 +19,18 @@
 
 
 #define favorites_file	@"favorites.plist"
-
+#define embedHTML @"\
+<html><head>\
+<style type=\"text/css\">\
+body {\
+background-color: transparent;\
+color: white;\
+}\
+</style>\
+</head><body style=\"margin:0\">\
+<embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
+width=\"%0.0f\" height=\"%0.0f\"></embed>\
+</body></html>"
 
 #ifdef DEBUG
 #define UGVID  @"711390"
