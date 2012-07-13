@@ -283,7 +283,7 @@
 
 #define ADMIN_SECRET (@"2fbce27a889eed321a3c5b951d85bc73")
 #define PARTNER_ID (989031)
-#define USER_ID (@"user")
+#define USER_ID ([[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"])
 
 
 - (void)uploadProcess:(NSDictionary *)data {

@@ -61,10 +61,10 @@
 
 - (void)updateView
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"]) {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]) {
         if ([[Client instance] login])
         {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userEmail"];
+            //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userEmail"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
             [[NSUserDefaults standardUserDefaults] synchronize];
 

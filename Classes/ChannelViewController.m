@@ -358,6 +358,7 @@
 		else
 		{
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //			VideoItem* item = [self.items objectAtIndex:indexPath.row];
 //			MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];
 //			[self presentMoviePlayerViewControllerAnimated:moviePlayer];
