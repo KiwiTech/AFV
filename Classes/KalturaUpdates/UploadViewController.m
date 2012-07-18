@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "AFVAppDelegate.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "RegistrationViewController.h"
 
 @interface UploadViewController(private)
 
@@ -54,15 +55,15 @@
 @synthesize uploadExistingVideoButton;
 @synthesize loginView;
 @synthesize videoOptionsView;
-
+@synthesize userData;
 
 #pragma mark -
 #pragma mark ABCRegistrationViewDelegate methods
 
 - (void)updateView
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]) {
-        if ([[Client instance] login])
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"]) {
+        if (self.userData)
         {
             //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userEmail"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
@@ -78,8 +79,8 @@
             // detect video album availability
             uploadExistingVideoButton.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] &&
             [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum] containsObject:(NSString*) kUTTypeMovie];
-        }
-    }	
+    }
+ //   }	
 }
 
 
@@ -96,7 +97,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
+
+	[self.navigationItem setHidesBackButton:YES];
 	[self updateView];	
 }
 
@@ -120,9 +122,25 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark UI Actions
+
+- (IBAction)createNewButtonPressed:(id)sender {
+    
+    NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
+	
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	if([fileManager fileExistsAtPath:sPath])
+	{
+       [fileManager removeItemAtPath:sPath error:nil];
+    }
+    
+    NSArray* arr =    self.navigationController.viewControllers;
+    RegistrationViewController* viewController = (RegistrationViewController*)[arr objectAtIndex:0];
+    viewController.isCompleted = FALSE;
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(IBAction)loginButtonAction:(id)sender
 {
@@ -194,6 +212,7 @@
 		
 		uploadVideoDetailViewController = [[UploadVideoDetailViewController alloc] initWithNibName:@"UploadVideoDetailViewController" bundle:nil];		
 
+        uploadVideoDetailViewController.userData = self.userData;
 		// Set video file URL
 		uploadVideoDetailViewController.videoFileURL = fileURL;
 		
@@ -249,6 +268,7 @@
 - (void)dealloc {
     [super dealloc];
 	
+    [userData release];
 	[loginButton release];
 	[webLinkButton release];
 	[shootVideoButton release];

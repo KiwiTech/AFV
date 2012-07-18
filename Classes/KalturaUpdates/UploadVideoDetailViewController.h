@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HTTPPostRequest.h"
+#import "UserDataHolder.h"
 
 @interface UploadVideoDetailViewController : UIViewController<UITextFieldDelegate,KalturaClientDelegate, ASIProgressDelegate,UITextViewDelegate> {
 
@@ -47,6 +48,8 @@
 @property(nonatomic, retain) UIImage* videoThumbnail;
 @property(nonatomic, retain) NSURL* videoFileURL;
 //@property(nonatomic, retain) HTTPPostRequest* postRequest;
+
+@property (nonatomic, retain) UserDataHolder*   userData;
 
 -(IBAction)playAction:(id)sender;
 -(IBAction)uploadAction:(id)sender;

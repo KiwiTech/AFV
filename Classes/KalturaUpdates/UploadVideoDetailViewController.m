@@ -26,6 +26,8 @@
 
 @synthesize videoThumbnail;
 @synthesize videoFileURL;
+@synthesize userData;
+
 //@synthesize cancelButton;
 //@synthesize postRequest;
 
@@ -225,6 +227,7 @@
     titleTextField.text = @"";
 	descriptionTextView.text = @"";
 	
+    [self.navigationController popToRootViewControllerAnimated:NO];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -268,7 +271,8 @@
 
 #define ADMIN_SECRET (@"2fbce27a889eed321a3c5b951d85bc73")
 #define PARTNER_ID (989031)
-#define USER_ID ([[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"])
+#define USER_ID    @"ANONYMOUS"
+//([[NSUserDefaults standardUserDefaults] objectForKey:@"userEmail"])
 
 
 - (void)uploadProcess:(NSDictionary *)data {
@@ -319,11 +323,21 @@
     KalturaMetadataListResponse *list = [newClinet.metadata listWithFilter:filter];
     NSMutableArray * thisArray = [list objects];
     KalturaMetadata *xnl = [thisArray objectAtIndex:0];
-    NSString *newString = @"<metadata>"
+    NSString *newString = [NSString stringWithFormat:@"<metadata>"
     "<WorkflowStatus>For Review</WorkflowStatus>"
-    "<UGCFirstName>VijayG</UGCFirstName>"
-    "<UGCLastName>Gupta</UGCLastName>"
-    "</metadata>";
+    "<UGCFirstName>%@</UGCFirstName>"
+    "<UGCLastName>%@</UGCLastName>"
+    "<UGCEmail>%@</UGCEmail>"
+    "<UGCAdress>%@</UGCAdress>"
+    "<UGCCity>%@</UGCCity>"
+    "<UGCState>%@</UGCState>"
+    "<UGCZipPostal>%@</UGCZipPostal>"
+    "<UGCCountry>%@</UGCCountry>"
+    "<UGCPhone>%@</UGCPhone>"
+    "<UGCPhone2>%@</UGCPhone2>"
+    "<UGCBirthDate>%@</UGCBirthDate>"
+    "<UGCGender>%@</UGCGender>"
+    "</metadata>", userData.sFirstName, userData.sLastName, userData.sEmail, userData.sAddress, userData.sCity, userData.sState, userData.sZip, userData.sCountry, userData.sPhone1, userData.sPhone2, userData.sBirthDate, userData.sGender];
 
     [newClinet.metadata updateWithId:xnl.id withXmlData:newString];
     
@@ -554,6 +568,7 @@
 	
 	[videoThumbnail release];
 	[videoFileURL release];
+    [userData release];
 	
     [super dealloc];
 }

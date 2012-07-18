@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UploadVideoDetailViewController.h"
 #import "KalturaRegistrationView.h"
-
+#import "UserDataHolder.h"
 
 @interface UploadViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 
@@ -31,12 +31,12 @@
 @property(nonatomic, retain) IBOutlet UIButton* uploadExistingVideoButton;
 @property(nonatomic, retain) IBOutlet UIView* loginView;
 @property(nonatomic, retain) IBOutlet UIView* videoOptionsView;
-
+@property (nonatomic, retain) UserDataHolder*   userData;
 
 -(IBAction)loginButtonAction:(id)sender;
 -(IBAction)webLinkButtonAction:(id)sender;
 -(IBAction)shootVideoButtonAction:(id)sender;
 -(IBAction)uploadExistingVideoButtonAction:(id)sender;
-
+- (IBAction)createNewButtonPressed:(id)sender;
 
 @end

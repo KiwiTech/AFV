@@ -17,6 +17,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "KalturaThumbView.h"
 
+#define kLIBRARY_DIRECTORY		(NSString *)[NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES) objectAtIndex:0]
 
 #define favorites_file	@"favorites.plist"
 #define embedHTML @"\
