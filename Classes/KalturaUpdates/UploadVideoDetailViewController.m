@@ -11,6 +11,7 @@
 #import "GenericXMLParser.h"
 #import "UploadConfirmationViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "KalturaMetadataClientPlugin.h"
 
 @implementation UploadVideoDetailViewController
 
@@ -212,22 +213,6 @@
     client.delegate = nil;
     client.uploadProgressDelegate = nil;
     
-//    NSLog(@"***************Name : %@", currentUser.fullName);
-//    NSLog(@"***************Name : %@", currentUser.firstName);
-//    NSLog(@"***************Name : %@", currentUser.lastName);
-//    NSLog(@"***************Name : %@", currentUser.email);
-//    NSLog(@"***************Name : %@", currentUser.city);
-//    NSLog(@"***************Name : %@", currentUser.state);
-//    NSLog(@"***************Name : %@", currentUser.zip);
-//    NSLog(@"***************Name : %@", currentUser.country);
-//    NSLog(@"***************Name : %@", currentUser.password);
-//    NSLog(@"***************Name : %@", currentUser.description);
-//    NSLog(@"***************Name : %d", currentUser.dateOfBirth);
-//    NSLog(@"***************Name : %d", currentUser.lastLoginTime);
-//    NSLog(@"***************Name : %d", currentUser.gender);
-//    NSLog(@"***************Name : %d", currentUser.createdAt);
-    
-
 }
 
 -(IBAction)cancelAction:(id)sender
@@ -324,13 +309,28 @@
     KalturaUploadedFileTokenResource* resource = [[[KalturaUploadedFileTokenResource alloc] init] autorelease];
     resource.token = token.id;
     entry = [client.media addContentWithEntryId:entry.id withResource:resource];
+   
+    //Custom Data Upload
+    KalturaMetadataClientPlugin *newClinet = [[KalturaMetadataClientPlugin alloc] init];
+    KalturaMetadataFilter *filter = [[KalturaMetadataFilter alloc] init];
+    filter.objectIdEqual = entry.id;
+    filter.metadataObjectTypeEqual = [KalturaMetadataObjectType ENTRY];
+    newClinet.client = client;
+    KalturaMetadataListResponse *list = [newClinet.metadata listWithFilter:filter];
+    NSMutableArray * thisArray = [list objects];
+    KalturaMetadata *xnl = [thisArray objectAtIndex:0];
+    NSString *newString = @"<metadata>"
+    "<WorkflowStatus>For Review</WorkflowStatus>"
+    "<UGCFirstName>VijayG</UGCFirstName>"
+    "<UGCLastName>Gupta</UGCLastName>"
+    "</metadata>";
+
+    [newClinet.metadata updateWithId:xnl.id withXmlData:newString];
     
-    //currentUser = [[client.user getWithUserId:@"vijayg@kiwitech.com"] retain];
-    //currentUser = [[client.user getByLoginIdWithLoginId:@"vijayg@kiwitech.com"] retain];
     
     client.delegate = self;
     client.uploadProgressDelegate = self;
-    
+      
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[data objectForKey:@"path"] error:nil];
     
     NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
@@ -338,6 +338,7 @@
     uploadedSize = 0;
     token = [client.uploadToken uploadWithUploadTokenId:token.id withFileData:[data objectForKey:@"path"]];
   
+ 
     
     
 }

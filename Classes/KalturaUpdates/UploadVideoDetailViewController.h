@@ -31,8 +31,6 @@
 	BOOL isTitleEmpty;
 	BOOL isDescriptionEmpty;
     
-    //KalturaUser *currentUser;
-	
 	
 }
 
