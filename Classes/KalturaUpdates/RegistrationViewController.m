@@ -7,7 +7,7 @@
 //
 
 #import "RegistrationViewController.h"
-#import "UploadViewController.h"
+#import "AFVAppDelegate.h"
 
 #define allTrim( object ) [object stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ]
 
@@ -23,6 +23,8 @@
 @synthesize m_pickerView;
 @synthesize m_sBirthDate;
 @synthesize isCompleted;
+@synthesize m_delegate;
+@synthesize m_txtGender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,14 +33,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)pushtoUploadViewController {
- 
-    UploadViewController* viewController = [[UploadViewController alloc] initWithNibName:@"UploadViewController" bundle:nil];
-    viewController.userData = m_userData;
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
 }
 
 - (void)showAlertMessage:(NSString*)sMessage {
@@ -54,43 +48,47 @@
     [super viewDidLoad];
         
     isRemembered = NO;
-                   
-    m_scrollView.contentSize = CGSizeMake(320.0, 680.0);
+        
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    self.m_sBirthDate = [dateFormatter stringFromDate:[NSDate date]];
+    [dateFormatter release];
+    
+    m_scrollView.contentSize = CGSizeMake(320.0, 700.0);
     m_tableView.backgroundColor =[UIColor whiteColor];
     
     [m_tableView.layer setCornerRadius:2.0];
     //Set the border color
     [m_tableView.layer setBorderColor:[[UIColor darkGrayColor] CGColor]];
     [m_tableView.layer setBorderWidth:1.0];
+    
+    if(m_userData) {
+       [m_userData release];
+        m_userData = nil;
+    }
+                  
+    m_userData = [[UserDataHolder alloc] init];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-   
-    NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
-	
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	if([fileManager fileExistsAtPath:sPath])
-	{
-		m_userData = [NSKeyedUnarchiver unarchiveObjectWithFile:sPath];
-        [self pushtoUploadViewController];
-    }
-    else {
-        if(isCompleted){
-            
-            [self pushtoUploadViewController];
-        }
-        else {
-            
-            if(m_userData) {
-                [m_userData release];
-                 m_userData = nil;
-            }
-            
-            m_userData = [[UserDataHolder alloc] init];
-        }
-    }
-}
+- (void)viewWillDisappear:(BOOL)animated {
 
+    [super viewWillDisappear:animated];
+    
+    for(NSInteger i=1;i<=12;i++) {
+        
+        UITextField* txtField = (UITextField*)[m_scrollView viewWithTag:i];
+        txtField.text = @"";
+    }
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    self.m_sBirthDate = [dateFormatter stringFromDate:[NSDate date]];
+    [dateFormatter release];
+    
+    m_txtGender.text = @"Select a value";
+}
 
 - (void)viewDidUnload
 {
@@ -106,6 +104,7 @@
 
 - (void)dealloc {
     
+    [m_txtGender release];
     [m_pickerView release];
     [m_datePicker release];
     [m_tableView release];
@@ -145,7 +144,6 @@
     UITextField* textField = (UITextField*)[m_scrollView viewWithTag:5];
     textField.text = m_sBirthDate;
     [self hidePickerView];
-   
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -172,17 +170,31 @@
    self.isCompleted = [self checkForRequiredField];
     
     if(isCompleted) {
-        
+       
+        NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
+
         if(isRemembered) {
-            NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
             [NSKeyedArchiver archiveRootObject:m_userData toFile:sPath];
         }
+        else {
+            	
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if([fileManager fileExistsAtPath:sPath]) {
+                   [fileManager removeItemAtPath:sPath error:nil];
+            }
+        }
     
-        [self pushtoUploadViewController];
+        [m_delegate registrationCompleted:m_userData];
     }
 }
 
 - (IBAction)genderButtonPressed:(id)sender {
+    
+    for(NSInteger i=1;i<=12;i++) {
+        
+        UITextField* txtField = (UITextField*)[m_scrollView viewWithTag:i];
+        [txtField resignFirstResponder];
+    }
     
     if(m_tableView.hidden == YES) {
         m_tableView.hidden = NO;
@@ -432,21 +444,21 @@
         m_pickerView.frame = frame;
         
         [UIView commitAnimations];
-		[m_scrollView setContentOffset:CGPointMake(0.0, 140) animated:YES];
+		[m_scrollView setContentOffset:CGPointMake(0.0, 170) animated:YES];
         
         return NO;
 	}
 	else if(textField.tag == 6)
 	{
-		[m_scrollView setContentOffset:CGPointMake(0.0, 180) animated:YES];
+		[m_scrollView setContentOffset:CGPointMake(0.0, 200) animated:YES];
 	}
 	else if(textField.tag == 7)
 	{
-		[m_scrollView setContentOffset:CGPointMake(0.0, 200) animated:YES];
+		[m_scrollView setContentOffset:CGPointMake(0.0, 220) animated:YES];
 	}
 	else if(textField.tag == 8)
 	{
-		[m_scrollView setContentOffset:CGPointMake(0.0, 220) animated:YES];
+		[m_scrollView setContentOffset:CGPointMake(0.0, 240) animated:YES];
 	}
 	else if(textField.tag == 9)
 	{
@@ -478,39 +490,39 @@
     
     [textField resignFirstResponder];
     
-    if(textField.tag == 1){
-        [(UITextField*)[m_scrollView viewWithTag:2] becomeFirstResponder];
-    }
-    else if(textField.tag == 2){
-        [(UITextField*)[m_scrollView viewWithTag:3] becomeFirstResponder];
-    }
-    else if(textField.tag == 3){
-        [(UITextField*)[m_scrollView viewWithTag:4] becomeFirstResponder];
-    }
-    else if(textField.tag == 4){
-        [(UITextField*)[m_scrollView viewWithTag:5] becomeFirstResponder];
-    }
-    else if(textField.tag == 5){
-        [(UITextField*)[m_scrollView viewWithTag:6] becomeFirstResponder];
-    }
-    else if(textField.tag == 6){
-        [(UITextField*)[m_scrollView viewWithTag:7] becomeFirstResponder];
-    }
-    else if(textField.tag == 7){
-        [(UITextField*)[m_scrollView viewWithTag:8] becomeFirstResponder];
-    }
-    else if(textField.tag == 8){
-        [(UITextField*)[m_scrollView viewWithTag:9] becomeFirstResponder];
-    }
-    else if(textField.tag == 9){
-        [(UITextField*)[m_scrollView viewWithTag:10] becomeFirstResponder];
-    }
-    else if(textField.tag == 10){
-        [(UITextField*)[m_scrollView viewWithTag:11] becomeFirstResponder];
-    }
-    else if(textField.tag == 11){
-        [(UITextField*)[m_scrollView viewWithTag:12] becomeFirstResponder];
-    }
+//    if(textField.tag == 1){
+//        [(UITextField*)[m_scrollView viewWithTag:2] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 2){
+//        [(UITextField*)[m_scrollView viewWithTag:3] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 3){
+//        [(UITextField*)[m_scrollView viewWithTag:4] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 4){
+//        [(UITextField*)[m_scrollView viewWithTag:5] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 5){
+//        [(UITextField*)[m_scrollView viewWithTag:6] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 6){
+//        [(UITextField*)[m_scrollView viewWithTag:7] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 7){
+//        [(UITextField*)[m_scrollView viewWithTag:8] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 8){
+//        [(UITextField*)[m_scrollView viewWithTag:9] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 9){
+//        [(UITextField*)[m_scrollView viewWithTag:10] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 10){
+//        [(UITextField*)[m_scrollView viewWithTag:11] becomeFirstResponder];
+//    }
+//    else if(textField.tag == 11){
+//        [(UITextField*)[m_scrollView viewWithTag:12] becomeFirstResponder];
+//    }
     
     return YES;
 }
@@ -542,8 +554,8 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QuoteCellIdentifier];
         
-        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+        cell.textLabel.textColor = [UIColor blackColor];
      
         cell.backgroundColor = [UIColor whiteColor];
         switch (indexPath.row) {
@@ -569,10 +581,14 @@
     
     UITableViewCell* cell = (UITableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     m_userData.sGender = cell.textLabel.text;
-       
+     m_txtGender.text = cell.textLabel.text;
     
     [self hideTableView];
 }
+
+
+#pragma mark --
+#pragma mark <UIDatePicker Delegate>
 
 - (IBAction)dateValueChanged:(id)sender
 {

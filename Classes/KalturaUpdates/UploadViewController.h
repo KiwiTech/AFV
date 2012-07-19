@@ -10,6 +10,7 @@
 #import "UploadVideoDetailViewController.h"
 #import "KalturaRegistrationView.h"
 #import "UserDataHolder.h"
+#import "RegistrationViewController.h"
 
 @interface UploadViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 
@@ -23,6 +24,7 @@
 	@private
 	BOOL shouldPresentVideoDetailView;
 	UploadVideoDetailViewController* uploadVideoDetailViewController;
+    RegistrationViewController* regViewController;
 }
 
 @property(nonatomic, retain) IBOutlet UIButton* loginButton;
@@ -38,5 +40,6 @@
 -(IBAction)shootVideoButtonAction:(id)sender;
 -(IBAction)uploadExistingVideoButtonAction:(id)sender;
 - (IBAction)createNewButtonPressed:(id)sender;
+- (void)registrationCompleted:(UserDataHolder*)data;
 
 @end

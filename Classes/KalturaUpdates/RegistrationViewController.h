@@ -15,7 +15,6 @@
     
     BOOL    isRemembered;
     BOOL isCompleted;
-    
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView*        m_scrollView;
@@ -24,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UIView*   m_pickerView;
 @property (nonatomic, retain)     NSString*       m_sBirthDate;
 @property (nonatomic, assign) BOOL isCompleted;
+@property (nonatomic, assign) id    m_delegate;
+@property (nonatomic, retain) IBOutlet  UITextField*    m_txtGender;
 
 - (IBAction)submitButtonPressed:(id)sender;
 - (IBAction)genderButtonPressed:(id)sender;

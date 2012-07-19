@@ -13,13 +13,19 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		5A18913115B6F0A200E888BC /* btnNewUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A18913015B6F0A100E888BC /* btnNewUser.png */; };
 		5A683A7A15B53C400075458F /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A683A7815B53C400075458F /* RegistrationViewController.m */; };
 		5A683A7B15B53C400075458F /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A683A7915B53C400075458F /* RegistrationViewController.xib */; };
 		5A683A7F15B544760075458F /* UserDataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A683A7E15B544760075458F /* UserDataHolder.m */; };
-		5A683A9115B555160075458F /* btnSelectValue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A683A9015B555160075458F /* btnSelectValue.png */; };
 		5A683AA015B582980075458F /* checkRememberMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A683A9E15B582980075458F /* checkRememberMe.png */; };
 		5A683AA115B582980075458F /* uncheckRememberMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A683A9F15B582980075458F /* uncheckRememberMe.png */; };
 		5A74238015B68EB700D3E896 /* btnSubmit.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A74237F15B68EB700D3E896 /* btnSubmit.png */; };
+		5A76202815B7CF1200436317 /* dropdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202715B7CF1200436317 /* dropdown.png */; };
+		5A76202F15B7ECDA00436317 /* btnNewUser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202A15B7ECD900436317 /* btnNewUser@2x.png */; };
+		5A76203015B7ECDA00436317 /* btnSubmit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202B15B7ECD900436317 /* btnSubmit@2x.png */; };
+		5A76203115B7ECDA00436317 /* checkRememberMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */; };
+		5A76203215B7ECDA00436317 /* dropdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202D15B7ECDA00436317 /* dropdown@2x.png */; };
+		5A76203315B7ECDA00436317 /* uncheckRememberMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */; };
 		5A785CB915AEA09800330667 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A785CB815AEA09800330667 /* Security.framework */; };
 		D30E564A15611E25002CA5EC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564915611E25002CA5EC /* CoreMedia.framework */; };
 		D30E564E15611E4D002CA5EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564D15611E4D002CA5EC /* CFNetwork.framework */; };
@@ -55,12 +61,10 @@
 		D31472E7156E276400F212A6 /* KalturaXmlParsers.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472B5156E276400F212A6 /* KalturaXmlParsers.m */; };
 		D31472E8156E276400F212A6 /* KalturaRegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472B7156E276400F212A6 /* KalturaRegistrationView.m */; };
 		D31472E9156E276400F212A6 /* KalturaRegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472B8156E276400F212A6 /* KalturaRegistrationView.xib */; };
-		D31472EA156E276400F212A6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472BA156E276400F212A6 /* LoginViewController.m */; };
 		D31472EB156E276400F212A6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472BB156E276400F212A6 /* LoginViewController.xib */; };
 		D31472EC156E276400F212A6 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472BE156E276400F212A6 /* Client.m */; };
 		D31472ED156E276400F212A6 /* KalturaThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472C0156E276400F212A6 /* KalturaThumbView.m */; };
 		D31472EE156E276400F212A6 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472C2156E276400F212A6 /* Utils.m */; };
-		D31472EF156E276400F212A6 /* UploadConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472C4156E276400F212A6 /* UploadConfirmationViewController.m */; };
 		D31472F0156E276400F212A6 /* UploadConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472C5156E276400F212A6 /* UploadConfirmationViewController.xib */; };
 		D31472F1156E276400F212A6 /* UploadVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472C7156E276400F212A6 /* UploadVideoDetailViewController.m */; };
 		D31472F2156E276400F212A6 /* UploadVideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472C8156E276400F212A6 /* UploadVideoDetailViewController.xib */; };
@@ -202,15 +206,21 @@
 		28A0AB4B0D9B1048005BE974 /* AFV_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFV_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A18913015B6F0A100E888BC /* btnNewUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewUser.png; sourceTree = "<group>"; };
 		5A683A7715B53C400075458F /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		5A683A7815B53C400075458F /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		5A683A7915B53C400075458F /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationViewController.xib; path = Classes/KalturaUpdates/RegistrationViewController.xib; sourceTree = "<group>"; };
 		5A683A7D15B544760075458F /* UserDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataHolder.h; sourceTree = "<group>"; };
 		5A683A7E15B544760075458F /* UserDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataHolder.m; sourceTree = "<group>"; };
-		5A683A9015B555160075458F /* btnSelectValue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSelectValue.png; sourceTree = "<group>"; };
 		5A683A9E15B582980075458F /* checkRememberMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkRememberMe.png; sourceTree = "<group>"; };
 		5A683A9F15B582980075458F /* uncheckRememberMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckRememberMe.png; sourceTree = "<group>"; };
 		5A74237F15B68EB700D3E896 /* btnSubmit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSubmit.png; sourceTree = "<group>"; };
+		5A76202715B7CF1200436317 /* dropdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdown.png; sourceTree = "<group>"; };
+		5A76202A15B7ECD900436317 /* btnNewUser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnNewUser@2x.png"; sourceTree = "<group>"; };
+		5A76202B15B7ECD900436317 /* btnSubmit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnSubmit@2x.png"; sourceTree = "<group>"; };
+		5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkRememberMe@2x.png"; sourceTree = "<group>"; };
+		5A76202D15B7ECDA00436317 /* dropdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown@2x.png"; sourceTree = "<group>"; };
+		5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheckRememberMe@2x.png"; sourceTree = "<group>"; };
 		5A785CB815AEA09800330667 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* AFV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AFV-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D30E564915611E25002CA5EC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -280,8 +290,6 @@
 		D31472B6156E276400F212A6 /* KalturaRegistrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalturaRegistrationView.h; sourceTree = "<group>"; };
 		D31472B7156E276400F212A6 /* KalturaRegistrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalturaRegistrationView.m; sourceTree = "<group>"; };
 		D31472B8156E276400F212A6 /* KalturaRegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KalturaRegistrationView.xib; path = Classes/KalturaUpdates/KalturaRegistrationView.xib; sourceTree = "<group>"; };
-		D31472B9156E276400F212A6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		D31472BA156E276400F212A6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D31472BB156E276400F212A6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Classes/KalturaUpdates/LoginViewController.xib; sourceTree = "<group>"; };
 		D31472BD156E276400F212A6 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		D31472BE156E276400F212A6 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
@@ -289,8 +297,6 @@
 		D31472C0156E276400F212A6 /* KalturaThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalturaThumbView.m; sourceTree = "<group>"; };
 		D31472C1156E276400F212A6 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D31472C2156E276400F212A6 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		D31472C3156E276400F212A6 /* UploadConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadConfirmationViewController.h; sourceTree = "<group>"; };
-		D31472C4156E276400F212A6 /* UploadConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadConfirmationViewController.m; sourceTree = "<group>"; };
 		D31472C5156E276400F212A6 /* UploadConfirmationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UploadConfirmationViewController.xib; path = Classes/KalturaUpdates/UploadConfirmationViewController.xib; sourceTree = "<group>"; };
 		D31472C6156E276400F212A6 /* UploadVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadVideoDetailViewController.h; sourceTree = "<group>"; };
 		D31472C7156E276400F212A6 /* UploadVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadVideoDetailViewController.m; sourceTree = "<group>"; };
@@ -561,10 +567,6 @@
 				D3147277156E276400F212A6 /* KalturaClient */,
 				D31472B6156E276400F212A6 /* KalturaRegistrationView.h */,
 				D31472B7156E276400F212A6 /* KalturaRegistrationView.m */,
-				D31472B9156E276400F212A6 /* LoginViewController.h */,
-				D31472BA156E276400F212A6 /* LoginViewController.m */,
-				D31472C3156E276400F212A6 /* UploadConfirmationViewController.h */,
-				D31472C4156E276400F212A6 /* UploadConfirmationViewController.m */,
 				D31472C6156E276400F212A6 /* UploadVideoDetailViewController.h */,
 				D31472C7156E276400F212A6 /* UploadVideoDetailViewController.m */,
 				D31472C9156E276400F212A6 /* UploadViewController.h */,
@@ -676,10 +678,16 @@
 		DA1DF7FF1305D4AD00BBD595 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5A76202A15B7ECD900436317 /* btnNewUser@2x.png */,
+				5A76202B15B7ECD900436317 /* btnSubmit@2x.png */,
+				5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */,
+				5A76202D15B7ECDA00436317 /* dropdown@2x.png */,
+				5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */,
+				5A76202715B7CF1200436317 /* dropdown.png */,
+				5A18913015B6F0A100E888BC /* btnNewUser.png */,
 				5A74237F15B68EB700D3E896 /* btnSubmit.png */,
 				5A683A9E15B582980075458F /* checkRememberMe.png */,
 				5A683A9F15B582980075458F /* uncheckRememberMe.png */,
-				5A683A9015B555160075458F /* btnSelectValue.png */,
 				DAD38625132F4936006CF225 /* Icon-72.png */,
 				DAD38626132F4936006CF225 /* Icon-Small-50.png */,
 				DAD38627132F4936006CF225 /* Icon-Small.png */,
@@ -1038,10 +1046,16 @@
 				D31472F2156E276400F212A6 /* UploadVideoDetailViewController.xib in Resources */,
 				D31472F4156E276400F212A6 /* UploadViewController.xib in Resources */,
 				5A683A7B15B53C400075458F /* RegistrationViewController.xib in Resources */,
-				5A683A9115B555160075458F /* btnSelectValue.png in Resources */,
 				5A683AA015B582980075458F /* checkRememberMe.png in Resources */,
 				5A683AA115B582980075458F /* uncheckRememberMe.png in Resources */,
 				5A74238015B68EB700D3E896 /* btnSubmit.png in Resources */,
+				5A18913115B6F0A200E888BC /* btnNewUser.png in Resources */,
+				5A76202815B7CF1200436317 /* dropdown.png in Resources */,
+				5A76202F15B7ECDA00436317 /* btnNewUser@2x.png in Resources */,
+				5A76203015B7ECDA00436317 /* btnSubmit@2x.png in Resources */,
+				5A76203115B7ECDA00436317 /* checkRememberMe@2x.png in Resources */,
+				5A76203215B7ECDA00436317 /* dropdown@2x.png in Resources */,
+				5A76203315B7ECDA00436317 /* uncheckRememberMe@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1109,11 +1123,9 @@
 				D31472E6156E276400F212A6 /* KalturaVirusScanClientPlugin.m in Sources */,
 				D31472E7156E276400F212A6 /* KalturaXmlParsers.m in Sources */,
 				D31472E8156E276400F212A6 /* KalturaRegistrationView.m in Sources */,
-				D31472EA156E276400F212A6 /* LoginViewController.m in Sources */,
 				D31472EC156E276400F212A6 /* Client.m in Sources */,
 				D31472ED156E276400F212A6 /* KalturaThumbView.m in Sources */,
 				D31472EE156E276400F212A6 /* Utils.m in Sources */,
-				D31472EF156E276400F212A6 /* UploadConfirmationViewController.m in Sources */,
 				D31472F1156E276400F212A6 /* UploadVideoDetailViewController.m in Sources */,
 				D31472F3156E276400F212A6 /* UploadViewController.m in Sources */,
 				5A683A7A15B53C400075458F /* RegistrationViewController.m in Sources */,

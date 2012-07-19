@@ -53,6 +53,7 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MAA</bytes>
@@ -119,7 +120,7 @@
 											<object class="IBUIImageView" id="797447525">
 												<reference key="NSNextResponder" ref="521888142"/>
 												<int key="NSvFlags">274</int>
-												<string key="NSFrameSize">{89, 33}</string>
+												<string key="NSFrame">{{5, 5}, {51, 33}}</string>
 												<reference key="NSSuperview" ref="521888142"/>
 												<int key="IBUIContentMode">5</int>
 												<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -142,7 +143,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<reference key="IBUIParentViewController" ref="814028662"/>
-							<string key="IBUINibName">RegistrationViewController</string>
+							<string key="IBUINibName">UploadViewController</string>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
 								<int key="interfaceOrientation">1</int>
@@ -196,7 +197,7 @@
 												<object class="IBUIImageView" id="43389917">
 													<reference key="NSNextResponder" ref="582095918"/>
 													<int key="NSvFlags">274</int>
-													<string key="NSFrameSize">{89, 33}</string>
+													<string key="NSFrame">{{5, 5}, {51, 33}}</string>
 													<reference key="NSSuperview" ref="582095918"/>
 													<int key="IBUIContentMode">5</int>
 													<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -204,7 +205,7 @@
 													<reference key="IBUIImage" ref="391723849"/>
 												</object>
 											</object>
-											<string key="NSFrame">{{5, 5}, {89, 33}}</string>
+											<string key="NSFrame">{{5, 5}, {72, 33}}</string>
 											<reference key="IBUIBackgroundColor" ref="208436799"/>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										</object>
@@ -266,7 +267,7 @@
 												<object class="IBUIImageView" id="1005926163">
 													<reference key="NSNextResponder" ref="286952051"/>
 													<int key="NSvFlags">274</int>
-													<string key="NSFrameSize">{89, 33}</string>
+													<string key="NSFrame">{{5, 5}, {51, 33}}</string>
 													<reference key="NSSuperview" ref="286952051"/>
 													<int key="IBUIContentMode">5</int>
 													<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -336,7 +337,7 @@
 												<object class="IBUIImageView" id="649627471">
 													<reference key="NSNextResponder" ref="51954465"/>
 													<int key="NSvFlags">274</int>
-													<string key="NSFrameSize">{89, 33}</string>
+													<string key="NSFrame">{{5, 5}, {51, 33}}</string>
 													<reference key="NSSuperview" ref="51954465"/>
 													<int key="IBUIContentMode">5</int>
 													<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -370,6 +371,7 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSNextKeyView"/>
 					<reference key="IBUIBackgroundColor" ref="208436799"/>
 					<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -788,7 +790,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>RegistrationViewController</string>
+					<string>UploadViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -849,7 +851,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">img-afv-logo-sml.png</string>
-			<string key="NS.object.0">{89, 33}</string>
+			<string key="NS.object.0">{51, 33}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>

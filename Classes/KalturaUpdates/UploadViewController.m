@@ -8,10 +8,8 @@
 
 #import "UploadViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "LoginViewController.h"
 #import "AFVAppDelegate.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "RegistrationViewController.h"
 
 @interface UploadViewController(private)
 
@@ -80,6 +78,7 @@
             uploadExistingVideoButton.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum] &&
             [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum] containsObject:(NSString*) kUTTypeMovie];
     }
+     
  //   }	
 }
 
@@ -91,7 +90,22 @@
     [super viewDidLoad];
 
 	shouldPresentVideoDetailView = NO;
+
+    regViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationViewController" bundle:nil];
+    regViewController.m_delegate = self;
+    
+    NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
 	
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	if([fileManager fileExistsAtPath:sPath])
+	{
+         regViewController.view.frame = CGRectMake(0, 367, 320, 367);
+		self.userData = [NSKeyedUnarchiver unarchiveObjectWithFile:sPath];
+    }
+    else {
+        regViewController.view.frame = CGRectMake(0, 0, 320, 460);
+        [self.view addSubview:regViewController.view];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,6 +114,10 @@
 
 	[self.navigationItem setHidesBackButton:YES];
 	[self updateView];	
+    
+    if(self.userData) {
+        [regViewController.view removeFromSuperview];
+    }
 }
 
 
@@ -119,34 +137,90 @@
 		}
 		
 	}
-	
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    if(self.navigationItem.rightBarButtonItem) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 #pragma mark -
 #pragma mark UI Actions
 
-- (IBAction)createNewButtonPressed:(id)sender {
+- (void)animationStop:(NSString *)animationID finished:(BOOL)finished context:(void *)context  {
     
-    NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
-	
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	if([fileManager fileExistsAtPath:sPath])
-	{
-       [fileManager removeItemAtPath:sPath error:nil];
+    [regViewController.view removeFromSuperview];
+}
+
+- (void)hideRegistrationView {
+  
+    if(self.navigationItem.rightBarButtonItem) {
+        self.navigationItem.rightBarButtonItem = nil;
     }
+
+    [UIView beginAnimations:@"" context:nil]; 
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationStop:finished:context:)];
     
-    NSArray* arr =    self.navigationController.viewControllers;
-    RegistrationViewController* viewController = (RegistrationViewController*)[arr objectAtIndex:0];
-    viewController.isCompleted = FALSE;
+    CGRect frame = regViewController.view.frame;
+    frame.origin.y = 367;
+    regViewController.view.frame = frame;
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [UIView commitAnimations];
+
+}
+- (void)registrationCompleted:(UserDataHolder*)data {
+   
+    self.userData = data;
+    [self updateView];
+
+    [self hideRegistrationView];
+}
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self hideRegistrationView];
+}
+
+- (IBAction)createNewButtonPressed:(id)sender {
+   
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)] autorelease];
+    
+    regViewController.view.frame = CGRectMake(0, 367, 320, 367);
+    [self.view addSubview:regViewController.view];
+
+    [UIView beginAnimations:@"" context:nil]; 
+    [UIView setAnimationDuration:0.4];
+      
+    regViewController.view.frame = CGRectMake(0, 0, 320, 367);
+    
+    [UIView commitAnimations];
+    
+//    NSString *sPath = [kLIBRARY_DIRECTORY stringByAppendingPathComponent:@"user_data.xml"];
+//	
+//	NSFileManager *fileManager = [NSFileManager defaultManager];
+//	if([fileManager fileExistsAtPath:sPath])
+//	{
+//       [fileManager removeItemAtPath:sPath error:nil];
+//    }
+//    
+//    NSArray* arr =    self.navigationController.viewControllers;
+//    RegistrationViewController* viewController = (RegistrationViewController*)[arr objectAtIndex:0];
+//    viewController.isCompleted = FALSE;
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)loginButtonAction:(id)sender
 {
-	LoginViewController* loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-	[self presentModalViewController:loginViewController animated:YES];
-	[loginViewController release];
+//	LoginViewController* loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+//	[self presentModalViewController:loginViewController animated:YES];
+//	[loginViewController release];
 	
 }
 -(IBAction)webLinkButtonAction:(id)sender
@@ -266,15 +340,24 @@
 
 
 - (void)dealloc {
-    [super dealloc];
 	
-    [userData release];
+    if(userData) {
+        [userData release];
+    }
+    
+    if(regViewController) {
+        [regViewController release];
+        regViewController = nil;
+    }
+    
 	[loginButton release];
 	[webLinkButton release];
 	[shootVideoButton release];
 	[uploadExistingVideoButton release];
 	[loginView release];
 	[videoOptionsView release];
+    [super dealloc];
+
 
 }
 

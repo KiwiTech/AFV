@@ -159,7 +159,7 @@
 		uploadProgressOverlayView.hidden = NO;
 		
 		// start the upload process
-        NSDictionary *contentDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Video", titleTextField.text, descriptionTextView.text, @"", [self.videoFileURL path], nil] forKeys:[NSArray arrayWithObjects:@"category", @"title", @"description", @"tags", @"path", nil]];
+        NSDictionary *contentDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"", titleTextField.text, descriptionTextView.text, @"", [self.videoFileURL path], nil] forKeys:[NSArray arrayWithObjects:@"category", @"title", @"description", @"tags", @"path", nil]];
         
 		[self performSelector:@selector(uploadProcess:) withObject:contentDict afterDelay:0.2];
 	}
@@ -337,7 +337,9 @@
     "<UGCPhone2>%@</UGCPhone2>"
     "<UGCBirthDate>%@</UGCBirthDate>"
     "<UGCGender>%@</UGCGender>"
-    "</metadata>", userData.sFirstName, userData.sLastName, userData.sEmail, userData.sAddress, userData.sCity, userData.sState, userData.sZip, userData.sCountry, userData.sPhone1, userData.sPhone2, userData.sBirthDate, userData.sGender];
+    "<WebID>%@</WebID>"
+    "<SubmissionType>iPhone</SubmissionType>"
+    "</metadata>", userData.sFirstName, userData.sLastName, userData.sEmail, userData.sAddress, userData.sCity, userData.sState, userData.sZip, userData.sCountry, userData.sPhone1, userData.sPhone2, userData.sBirthDate, userData.sGender, entry.id];
 
     [newClinet.metadata updateWithId:xnl.id withXmlData:newString];
     
