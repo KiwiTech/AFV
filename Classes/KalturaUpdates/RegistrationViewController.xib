@@ -325,7 +325,7 @@
 								<string key="NSFrame">{{10, 534}, {105, 21}}</string>
 								<reference key="NSSuperview" ref="679027505"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="380446068"/>
+								<reference key="NSNextKeyView" ref="413858551"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="610693868"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -692,13 +692,13 @@
 								<reference key="IBUIFontDescription" ref="309035742"/>
 								<reference key="IBUIFont" ref="357197481"/>
 							</object>
-							<object class="IBUITextField" id="380446068">
+							<object class="IBUITextField" id="413858551">
 								<reference key="NSNextResponder" ref="679027505"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{120, 534}, {128, 31}}</string>
 								<reference key="NSSuperview" ref="679027505"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="218266053"/>
+								<reference key="NSNextKeyView" ref="754135719"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -722,7 +722,7 @@
 								<reference key="IBUIFontDescription" ref="309035742"/>
 								<reference key="IBUIFont" ref="357197481"/>
 							</object>
-							<object class="IBUIButton" id="218266053">
+							<object class="IBUIButton" id="754135719">
 								<reference key="NSNextResponder" ref="679027505"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{120, 534}, {133, 31}}</string>
@@ -785,7 +785,7 @@
 							<object class="IBUIButton" id="890545644">
 								<reference key="NSNextResponder" ref="679027505"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 580}, {110, 15}}</string>
+								<string key="NSFrame">{{10, 580}, {110, 25}}</string>
 								<reference key="NSSuperview" ref="679027505"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="461046457"/>
@@ -800,7 +800,7 @@
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="565012593"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">uncheckRememberMe.png</string>
 								</object>
@@ -943,7 +943,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 								<object class="NSDate" key="IBUIDate">
 									<double key="NS.time">364297679.75664598</double>
 								</object>
+								<object class="NSDate" key="IBUIMinimumDate">
+									<double key="NS.time">-3187257800</double>
+								</object>
 								<int key="IBUIMinuteInterval">1</int>
+								<bool key="IBUIHasMinimumDate">YES</bool>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 367}, {320, 256}}</string>
@@ -1010,7 +1014,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">m_txtGender</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="380446068"/>
+						<reference key="destination" ref="413858551"/>
 					</object>
 					<int key="connectionID">87</int>
 				</object>
@@ -1172,7 +1176,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">genderButtonPressed:</string>
-						<reference key="source" ref="218266053"/>
+						<reference key="source" ref="754135719"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -1241,8 +1245,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<reference ref="461046457"/>
 							<reference ref="890545644"/>
 							<reference ref="340855769"/>
-							<reference ref="218266053"/>
-							<reference ref="380446068"/>
+							<reference ref="754135719"/>
+							<reference ref="413858551"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -1450,13 +1454,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">84</int>
-						<reference key="object" ref="380446068"/>
+						<reference key="object" ref="413858551"/>
 						<reference key="parent" ref="679027505"/>
 						<string key="objectName">txtGender- Select A Value</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">85</int>
-						<reference key="object" ref="218266053"/>
+						<reference key="object" ref="754135719"/>
 						<reference key="parent" ref="679027505"/>
 						<string key="objectName">btnGender</string>
 					</object>

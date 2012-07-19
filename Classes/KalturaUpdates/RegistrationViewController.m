@@ -37,7 +37,7 @@
 
 - (void)showAlertMessage:(NSString*)sMessage {
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:sMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"" message:sMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
     [alert release];
 
@@ -47,6 +47,7 @@
 {
     [super viewDidLoad];
         
+    m_datePicker.maximumDate = [NSDate date];
     isRemembered = NO;
         
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
@@ -223,10 +224,10 @@
     isRemembered = !isRemembered;
     
     if(isRemembered) {
-        [btn setBackgroundImage:[UIImage imageNamed:@"checkRememberMe.png"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"checkRememberMe.png"] forState:UIControlStateNormal];
     }
     else {
-         [btn setBackgroundImage:[UIImage imageNamed:@"uncheckRememberMe.png"] forState:UIControlStateNormal];
+         [btn setImage:[UIImage imageNamed:@"uncheckRememberMe.png"] forState:UIControlStateNormal];
     }
 }
 
