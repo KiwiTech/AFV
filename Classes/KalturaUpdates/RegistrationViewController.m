@@ -191,6 +191,7 @@
 
 - (IBAction)genderButtonPressed:(id)sender {
     
+    [m_scrollView setContentOffset:CGPointMake(0.0, 380) animated:YES];
     for(NSInteger i=1;i<=12;i++) {
         
         UITextField* txtField = (UITextField*)[m_scrollView viewWithTag:i];

@@ -26,6 +26,8 @@
 		5A76203115B7ECDA00436317 /* checkRememberMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */; };
 		5A76203215B7ECDA00436317 /* dropdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202D15B7ECDA00436317 /* dropdown@2x.png */; };
 		5A76203315B7ECDA00436317 /* uncheckRememberMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */; };
+		5A76203615B7F42700436317 /* btnNewUseron.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76203415B7F42700436317 /* btnNewUseron.png */; };
+		5A76203715B7F42700436317 /* btnNewUserOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76203515B7F42700436317 /* btnNewUserOn@2x.png */; };
 		5A785CB915AEA09800330667 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A785CB815AEA09800330667 /* Security.framework */; };
 		D30E564A15611E25002CA5EC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564915611E25002CA5EC /* CoreMedia.framework */; };
 		D30E564E15611E4D002CA5EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564D15611E4D002CA5EC /* CFNetwork.framework */; };
@@ -221,6 +223,8 @@
 		5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkRememberMe@2x.png"; sourceTree = "<group>"; };
 		5A76202D15B7ECDA00436317 /* dropdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown@2x.png"; sourceTree = "<group>"; };
 		5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheckRememberMe@2x.png"; sourceTree = "<group>"; };
+		5A76203415B7F42700436317 /* btnNewUseron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewUseron.png; sourceTree = "<group>"; };
+		5A76203515B7F42700436317 /* btnNewUserOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnNewUserOn@2x.png"; sourceTree = "<group>"; };
 		5A785CB815AEA09800330667 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* AFV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AFV-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D30E564915611E25002CA5EC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -678,6 +682,8 @@
 		DA1DF7FF1305D4AD00BBD595 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				5A76203415B7F42700436317 /* btnNewUseron.png */,
+				5A76203515B7F42700436317 /* btnNewUserOn@2x.png */,
 				5A76202A15B7ECD900436317 /* btnNewUser@2x.png */,
 				5A76202B15B7ECD900436317 /* btnSubmit@2x.png */,
 				5A76202C15B7ECD900436317 /* checkRememberMe@2x.png */,
@@ -1056,6 +1062,8 @@
 				5A76203115B7ECDA00436317 /* checkRememberMe@2x.png in Resources */,
 				5A76203215B7ECDA00436317 /* dropdown@2x.png in Resources */,
 				5A76203315B7ECDA00436317 /* uncheckRememberMe@2x.png in Resources */,
+				5A76203615B7F42700436317 /* btnNewUseron.png in Resources */,
+				5A76203715B7F42700436317 /* btnNewUserOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
