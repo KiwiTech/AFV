@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
-		5A18913115B6F0A200E888BC /* btnNewUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A18913015B6F0A100E888BC /* btnNewUser.png */; };
 		5A683A7A15B53C400075458F /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A683A7815B53C400075458F /* RegistrationViewController.m */; };
 		5A683A7B15B53C400075458F /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A683A7915B53C400075458F /* RegistrationViewController.xib */; };
 		5A683A7F15B544760075458F /* UserDataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A683A7E15B544760075458F /* UserDataHolder.m */; };
@@ -72,6 +71,7 @@
 		D31472F2156E276400F212A6 /* UploadVideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472C8156E276400F212A6 /* UploadVideoDetailViewController.xib */; };
 		D31472F3156E276400F212A6 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31472CA156E276400F212A6 /* UploadViewController.m */; };
 		D31472F4156E276400F212A6 /* UploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31472CB156E276400F212A6 /* UploadViewController.xib */; };
+		D37CAAEB15B8116C00FEBD9F /* btnNewUser.png in Resources */ = {isa = PBXBuildFile; fileRef = D37CAAEA15B8116C00FEBD9F /* btnNewUser.png */; };
 		DA145514132ED3D60075B5CC /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA145503132ED3D60075B5CC /* Icon@2x.png */; };
 		DA145515132ED3D60075B5CC /* btn-play-lrg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA145504132ED3D60075B5CC /* btn-play-lrg@2x.png */; };
 		DA145516132ED3D60075B5CC /* btn-play-sml@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA145505132ED3D60075B5CC /* btn-play-sml@2x.png */; };
@@ -208,12 +208,11 @@
 		28A0AB4B0D9B1048005BE974 /* AFV_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFV_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5A18913015B6F0A100E888BC /* btnNewUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewUser.png; sourceTree = "<group>"; };
 		5A683A7715B53C400075458F /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		5A683A7815B53C400075458F /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		5A683A7915B53C400075458F /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationViewController.xib; path = Classes/KalturaUpdates/RegistrationViewController.xib; sourceTree = "<group>"; };
-		5A683A7D15B544760075458F /* UserDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataHolder.h; sourceTree = "<group>"; };
-		5A683A7E15B544760075458F /* UserDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataHolder.m; sourceTree = "<group>"; };
+		5A683A7D15B544760075458F /* UserDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDataHolder.h; path = ../UserDataHolder.h; sourceTree = "<group>"; };
+		5A683A7E15B544760075458F /* UserDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDataHolder.m; path = ../UserDataHolder.m; sourceTree = "<group>"; };
 		5A683A9E15B582980075458F /* checkRememberMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkRememberMe.png; sourceTree = "<group>"; };
 		5A683A9F15B582980075458F /* uncheckRememberMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckRememberMe.png; sourceTree = "<group>"; };
 		5A74237F15B68EB700D3E896 /* btnSubmit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSubmit.png; sourceTree = "<group>"; };
@@ -308,6 +307,7 @@
 		D31472C9156E276400F212A6 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		D31472CA156E276400F212A6 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 		D31472CB156E276400F212A6 /* UploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UploadViewController.xib; path = Classes/KalturaUpdates/UploadViewController.xib; sourceTree = "<group>"; };
+		D37CAAEA15B8116C00FEBD9F /* btnNewUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewUser.png; sourceTree = "<group>"; };
 		DA145503132ED3D60075B5CC /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DA145504132ED3D60075B5CC /* btn-play-lrg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-play-lrg@2x.png"; sourceTree = "<group>"; };
 		DA145505132ED3D60075B5CC /* btn-play-sml@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-play-sml@2x.png"; sourceTree = "<group>"; };
@@ -569,6 +569,8 @@
 			isa = PBXGroup;
 			children = (
 				D3147277156E276400F212A6 /* KalturaClient */,
+				5A683A7D15B544760075458F /* UserDataHolder.h */,
+				5A683A7E15B544760075458F /* UserDataHolder.m */,
 				D31472B6156E276400F212A6 /* KalturaRegistrationView.h */,
 				D31472B7156E276400F212A6 /* KalturaRegistrationView.m */,
 				D31472C6156E276400F212A6 /* UploadVideoDetailViewController.h */,
@@ -683,6 +685,7 @@
 			isa = PBXGroup;
 			children = (
 				5A76203415B7F42700436317 /* btnNewUseron.png */,
+				D37CAAEA15B8116C00FEBD9F /* btnNewUser.png */,
 				5A76203515B7F42700436317 /* btnNewUserOn@2x.png */,
 				5A76202A15B7ECD900436317 /* btnNewUser@2x.png */,
 				5A76202B15B7ECD900436317 /* btnSubmit@2x.png */,
@@ -690,7 +693,6 @@
 				5A76202D15B7ECDA00436317 /* dropdown@2x.png */,
 				5A76202E15B7ECDA00436317 /* uncheckRememberMe@2x.png */,
 				5A76202715B7CF1200436317 /* dropdown.png */,
-				5A18913015B6F0A100E888BC /* btnNewUser.png */,
 				5A74237F15B68EB700D3E896 /* btnSubmit.png */,
 				5A683A9E15B582980075458F /* checkRememberMe.png */,
 				5A683A9F15B582980075458F /* uncheckRememberMe.png */,
@@ -898,8 +900,6 @@
 				DA92A0D412FB5BC0001F2CAC /* VideoItem.m */,
 				DAB6A310130859BC00FAF02F /* FavoritesDB.h */,
 				DAB6A311130859BC00FAF02F /* FavoritesDB.m */,
-				5A683A7D15B544760075458F /* UserDataHolder.h */,
-				5A683A7E15B544760075458F /* UserDataHolder.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1055,7 +1055,6 @@
 				5A683AA015B582980075458F /* checkRememberMe.png in Resources */,
 				5A683AA115B582980075458F /* uncheckRememberMe.png in Resources */,
 				5A74238015B68EB700D3E896 /* btnSubmit.png in Resources */,
-				5A18913115B6F0A200E888BC /* btnNewUser.png in Resources */,
 				5A76202815B7CF1200436317 /* dropdown.png in Resources */,
 				5A76202F15B7ECDA00436317 /* btnNewUser@2x.png in Resources */,
 				5A76203015B7ECDA00436317 /* btnSubmit@2x.png in Resources */,
@@ -1064,6 +1063,7 @@
 				5A76203315B7ECDA00436317 /* uncheckRememberMe@2x.png in Resources */,
 				5A76203615B7F42700436317 /* btnNewUseron.png in Resources */,
 				5A76203715B7F42700436317 /* btnNewUserOn@2x.png in Resources */,
+				D37CAAEB15B8116C00FEBD9F /* btnNewUser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
