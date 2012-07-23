@@ -343,16 +343,16 @@
     txtField = (UITextField*)[m_scrollView viewWithTag:11]; 
     
     if([allTrim(txtField.text) length] == 0) {
-        [self showAlertMessage:@"Please enter phone 1"];            
+        [self showAlertMessage:@"Please enter phone"];            
         return NO;
     }
     
-    txtField = (UITextField*)[m_scrollView viewWithTag:12]; 
-    
-    if([allTrim(txtField.text) length] == 0) {
-        [self showAlertMessage:@"Please enter phone 2"];            
-        return NO;
-    }
+//    txtField = (UITextField*)[m_scrollView viewWithTag:12]; 
+//    
+//    if([allTrim(txtField.text) length] == 0) {
+//        [self showAlertMessage:@"Please enter phone 2"];            
+//        return NO;
+//    }
     
     if([m_userData.sGender length] == 0) {
         

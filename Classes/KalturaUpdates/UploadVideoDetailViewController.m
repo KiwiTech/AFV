@@ -339,7 +339,7 @@
     "<UGCGender>%@</UGCGender>"
     "<WebID>%@</WebID>"
     "<SubmissionType>iPhone</SubmissionType>"
-    "</metadata>", userData.sFirstName, userData.sLastName, userData.sEmail, userData.sAddress, userData.sCity, userData.sState, userData.sZip, userData.sCountry, userData.sPhone1, userData.sPhone2, userData.sBirthDate, userData.sGender, entry.id];
+                           "</metadata>", userData.sFirstName, userData.sLastName, userData.sEmail, userData.sAddress, userData.sCity, userData.sState, userData.sZip, userData.sCountry, userData.sPhone1, ([userData.sPhone2 length] > 0) ? userData.sPhone2 : @"", userData.sBirthDate, userData.sGender, entry.id];
 
     [newClinet.metadata updateWithId:xnl.id withXmlData:newString];
     
