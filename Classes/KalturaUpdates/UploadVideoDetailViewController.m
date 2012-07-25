@@ -247,9 +247,7 @@
        
     //[self endUploading];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Video" message:@"Thank You! Your video has been uploaded successfully." delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upload Video" message:@"We have received your submission and may contact you for additional details." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
     [alert show];
     [alert release];
