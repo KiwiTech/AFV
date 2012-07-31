@@ -14,6 +14,7 @@
 #import "FavoritesDB.h"
 #import "FacebookManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AFVAppDelegate.h"
 
 #define featured_item_count		20
 
@@ -127,7 +128,7 @@
 			frame.origin.x = frame.size.width * count++;
 			webView.frame = frame;
 			webView.contentMode = UIViewContentModeScaleToFill;
-                       
+
             NSString *html = [NSString stringWithFormat:embedHTML, videoItem.videoUrl, frame.size.width, frame.size.height];
             [webView loadHTMLString:html baseURL:nil];
 
@@ -207,8 +208,13 @@
                
                 NSDictionary *videoDict = [videoFeedArray objectAtIndex:i];
                 
+                if([[[[videoDict objectForKey:@"app$control"] objectForKey:@"yt$state"] objectForKey:@"name"] isEqualToString:@"restricted"]) {
+                    continue;
+                }
+                
                 VideoItem* videoItem = [[VideoItem alloc] init];
                 videoItem.title = [[[videoDict objectForKey:@"media$group"] objectForKey:@"media$title"] objectForKey:@"$t"];
+                
                 videoItem.videoUrl = [[[videoDict objectForKey:@"link"] objectAtIndex:0] objectForKey:@"href"];
                 NSString *tagString = [[[videoDict objectForKey:@"media$group"] objectForKey:@"media$description"] objectForKey:@"$t"];
                 tagString = [tagString stringByReplacingOccurrencesOfString:@"\n\n" withString:@" "];
@@ -255,6 +261,8 @@
 	// add rounded corners to loading view
 	loadingView.layer.cornerRadius = 8.0;
 	
+    [AFVAppDelegate insertAdInController:self atOffset:369];
+    
 	[self loadPage];	
 }
 

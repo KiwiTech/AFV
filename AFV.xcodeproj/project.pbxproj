@@ -28,6 +28,10 @@
 		5A76203615B7F42700436317 /* btnNewUseron.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76203415B7F42700436317 /* btnNewUseron.png */; };
 		5A76203715B7F42700436317 /* btnNewUserOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A76203515B7F42700436317 /* btnNewUserOn@2x.png */; };
 		5A785CB915AEA09800330667 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A785CB815AEA09800330667 /* Security.framework */; };
+		5A79633515C7B7BE00465353 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A79633315C7B7BE00465353 /* libGoogleAdMobAds.a */; };
+		5A79633615C7B7BE00465353 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5A79633415C7B7BE00465353 /* README.txt */; };
+		5A79633A15C7BA6800465353 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A79633915C7BA6800465353 /* AudioToolbox.framework */; };
+		5A79633E15C7C1B600465353 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A79633D15C7C1B600465353 /* libFlurryAnalytics.a */; };
 		D30E564A15611E25002CA5EC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564915611E25002CA5EC /* CoreMedia.framework */; };
 		D30E564E15611E4D002CA5EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564D15611E4D002CA5EC /* CFNetwork.framework */; };
 		D30E565115611E63002CA5EC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D30E564F15611E63002CA5EC /* libxml2.dylib */; };
@@ -225,6 +229,17 @@
 		5A76203415B7F42700436317 /* btnNewUseron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewUseron.png; sourceTree = "<group>"; };
 		5A76203515B7F42700436317 /* btnNewUserOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnNewUserOn@2x.png"; sourceTree = "<group>"; };
 		5A785CB815AEA09800330667 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5A79632D15C7B7BE00465353 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		5A79632E15C7B7BE00465353 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		5A79632F15C7B7BE00465353 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		5A79633015C7B7BE00465353 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		5A79633115C7B7BE00465353 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		5A79633215C7B7BE00465353 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		5A79633315C7B7BE00465353 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		5A79633415C7B7BE00465353 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		5A79633915C7BA6800465353 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5A79633C15C7C1B600465353 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		5A79633D15C7C1B600465353 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AFV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AFV-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D30E564915611E25002CA5EC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D30E564D15611E4D002CA5EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -469,6 +484,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A79633A15C7BA6800465353 /* AudioToolbox.framework in Frameworks */,
 				5A785CB915AEA09800330667 /* Security.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -483,6 +499,8 @@
 				D30E564E15611E4D002CA5EC /* CFNetwork.framework in Frameworks */,
 				D30E565115611E63002CA5EC /* libxml2.dylib in Frameworks */,
 				D30E565215611E63002CA5EC /* libz.dylib in Frameworks */,
+				5A79633515C7B7BE00465353 /* libGoogleAdMobAds.a in Frameworks */,
+				5A79633E15C7C1B600465353 /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +510,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5A79633B15C7C1B600465353 /* FlurryAnalytics */,
+				5A79632C15C7B7BE00465353 /* GoogleAdMobAdsSDKiOS-5.0.5 */,
 				DA6C643813119D71009090B4 /* Facebook */,
 				DA92A0D212FB59A4001F2CAC /* Model */,
 				DA92A0D112FB598E001F2CAC /* Utils & Services */,
@@ -549,6 +569,7 @@
 			children = (
 				D30E564F15611E63002CA5EC /* libxml2.dylib */,
 				D30E565015611E63002CA5EC /* libz.dylib */,
+				5A79633915C7BA6800465353 /* AudioToolbox.framework */,
 				5A785CB815AEA09800330667 /* Security.framework */,
 				D30E564D15611E4D002CA5EC /* CFNetwork.framework */,
 				D30E564915611E25002CA5EC /* CoreMedia.framework */,
@@ -563,6 +584,30 @@
 				DAAE56D6131F202D00B76EE5 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A79632C15C7B7BE00465353 /* GoogleAdMobAdsSDKiOS-5.0.5 */ = {
+			isa = PBXGroup;
+			children = (
+				5A79632D15C7B7BE00465353 /* GADBannerView.h */,
+				5A79632E15C7B7BE00465353 /* GADBannerViewDelegate.h */,
+				5A79632F15C7B7BE00465353 /* GADInterstitial.h */,
+				5A79633015C7B7BE00465353 /* GADInterstitialDelegate.h */,
+				5A79633115C7B7BE00465353 /* GADRequest.h */,
+				5A79633215C7B7BE00465353 /* GADRequestError.h */,
+				5A79633315C7B7BE00465353 /* libGoogleAdMobAds.a */,
+				5A79633415C7B7BE00465353 /* README.txt */,
+			);
+			path = "GoogleAdMobAdsSDKiOS-5.0.5";
+			sourceTree = "<group>";
+		};
+		5A79633B15C7C1B600465353 /* FlurryAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				5A79633C15C7C1B600465353 /* FlurryAnalytics.h */,
+				5A79633D15C7C1B600465353 /* libFlurryAnalytics.a */,
+			);
+			path = FlurryAnalytics;
 			sourceTree = "<group>";
 		};
 		D3147276156E276400F212A6 /* KalturaUpdates */ = {
@@ -1064,6 +1109,7 @@
 				5A76203615B7F42700436317 /* btnNewUseron.png in Resources */,
 				5A76203715B7F42700436317 /* btnNewUserOn@2x.png in Resources */,
 				D37CAAEB15B8116C00FEBD9F /* btnNewUser.png in Resources */,
+				5A79633615C7B7BE00465353 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,7 +1202,11 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "AFV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/GoogleAdMobAdsSDKiOS-5.0.5\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
+				);
 				PRODUCT_NAME = AFV;
 			};
 			name = Debug;
@@ -1171,7 +1221,11 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "AFV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/GoogleAdMobAdsSDKiOS-5.0.5\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
+				);
 				PRODUCT_NAME = AFV;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1220,7 +1274,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				OTHER_CFLAGS = "-DDEBUG=1";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -1237,7 +1291,11 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "AFV-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/GoogleAdMobAdsSDKiOS-5.0.5\"",
+					"\"$(SRCROOT)/Classes/FlurryAnalytics\"",
+				);
 				PRODUCT_NAME = AFV;
 				VALIDATE_PRODUCT = YES;
 			};

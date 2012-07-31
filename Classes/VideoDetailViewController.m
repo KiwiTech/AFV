@@ -10,7 +10,7 @@
 #import "MoviePlayerViewController.h"
 #import "FavoritesDB.h"
 #import "FacebookManager.h"
-
+#import "AFVAppDelegate.h"
 
 @implementation VideoDetailViewController
 
@@ -48,6 +48,8 @@
     
     NSString *html = [NSString stringWithFormat:embedHTML, videoItem.videoUrl, webView.frame.size.width, webView.frame.size.height];
     [webView loadHTMLString:html baseURL:nil];
+    
+    [AFVAppDelegate insertAdInController:self atOffset:369];
 	
 }
 

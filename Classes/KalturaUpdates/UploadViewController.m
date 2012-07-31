@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "AFVAppDelegate.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "AFVAppDelegate.h"
 
 @interface UploadViewController(private)
 
@@ -89,6 +90,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [AFVAppDelegate insertAdInController:self atOffset:369];
+    
 	shouldPresentVideoDetailView = NO;
 
     regViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationViewController" bundle:nil];
@@ -242,10 +245,12 @@
 }
 -(IBAction)shootVideoButtonAction:(id)sender
 {
+    videoSource = Camera;
 	[self presentImagePickerWithType:UIImagePickerControllerSourceTypeCamera];
 }
 -(IBAction)uploadExistingVideoButtonAction:(id)sender
 {
+    videoSource = Album;
 	[self presentImagePickerWithType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
 	
 }
@@ -290,6 +295,9 @@
 		// Set video file URL
 		uploadVideoDetailViewController.videoFileURL = fileURL;
 		
+        // Set video source
+		uploadVideoDetailViewController.videoSource = videoSource;
+        
 		// Generate and set the thumbnail
 		MPMoviePlayerController* moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
 		uploadVideoDetailViewController.videoThumbnail = [moviePlayer thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];

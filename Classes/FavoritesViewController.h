@@ -10,12 +10,14 @@
 #import "VideoItemCell.h"
 
 
-@interface FavoritesViewController : UITableViewController<VideoItemCellDelegate> {
+@interface FavoritesViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,VideoItemCellDelegate> {
 
+    UITableView* tableView;
 	NSArray* items;
 	
 }
 
+@property(nonatomic,retain) IBOutlet UITableView* tableView;
 @property(nonatomic, retain) NSArray* items;
 
 @end

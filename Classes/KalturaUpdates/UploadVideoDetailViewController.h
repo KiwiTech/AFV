@@ -31,7 +31,7 @@
 	@private
 	BOOL isTitleEmpty;
 	BOOL isDescriptionEmpty;
-    
+    int videoSource;
 	
 }
 
@@ -50,6 +50,7 @@
 //@property(nonatomic, retain) HTTPPostRequest* postRequest;
 
 @property (nonatomic, retain) UserDataHolder*   userData;
+@property(nonatomic, assign) int videoSource;
 
 -(IBAction)playAction:(id)sender;
 -(IBAction)uploadAction:(id)sender;

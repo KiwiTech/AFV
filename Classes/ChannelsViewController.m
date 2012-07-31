@@ -11,6 +11,7 @@
 #import "LoadingCell.h"
 #import "ChannelViewController.h"
 #import "SBJSON.h"
+#import "AFVAppDelegate.h"
 
 @interface ChannelsViewController()
 
@@ -20,7 +21,7 @@
 	
 	
 @implementation ChannelsViewController
-
+@synthesize tableView;
 @synthesize channels;
 
 #pragma mark -
@@ -40,11 +41,17 @@
 	else {
 		[self asyncDataReady];
 	}
-
+    
+    [AFVAppDelegate insertAdInController:self atOffset:369];
 }
 
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+}
 
 #pragma mark -
 #pragma mark Data loading and parsing
@@ -163,7 +170,7 @@
 	{
 		if(indexPath.row == 2)
 		{
-			LoadingCell *cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
+			LoadingCell *cell = (LoadingCell*)[self.tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
 			if (cell == nil) {
 				
 				NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"LoadingCell" owner:nil options:nil];
@@ -194,7 +201,7 @@
 			return cell;
 		}
 		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:EmptyCellIdentifier];
+		UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:EmptyCellIdentifier];
 		if (cell == nil) {
 
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:EmptyCellIdentifier] autorelease];
@@ -209,7 +216,7 @@
 	else
 	{
 		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:channelCellIdentifier];
+		UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:channelCellIdentifier];
 		if (cell == nil) {
 			
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:channelCellIdentifier] autorelease];
@@ -239,7 +246,7 @@
 
 	if(channels.count == 0)
 	{
-		LoadingCell* cell = (LoadingCell*)[tableView cellForRowAtIndexPath:indexPath];
+		LoadingCell* cell = (LoadingCell*)[self.tableView cellForRowAtIndexPath:indexPath];
 		if([cell isKindOfClass:[LoadingCell class]])
 		{
 			if(!loadingData)
@@ -255,7 +262,7 @@
 				[NSThread detachNewThreadSelector:@selector(asynchDataDownloadThread) toTarget:self withObject:nil];
 			}
 			
-			[tableView deselectRowAtIndexPath:indexPath animated:YES];
+			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 		}
 		
 	}

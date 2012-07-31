@@ -9,6 +9,8 @@
 #import "AFVAppDelegate.h"
 #import "CachedImageView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "GADBannerView.h"
+#import "FlurryAnalytics.h"
 
 @implementation AFVAppDelegate
 
@@ -43,6 +45,9 @@
 	// Setup image caching
 	[CachedImageView initializeImageCaching:YES];
 	
+    // Stat Flurry
+	[FlurryAnalytics startSession:@"ZIGK9C76TEANKMSZ313N"];
+    
     return YES;
 }
 
@@ -95,6 +100,28 @@
 
 }
 
++ (void)insertAdInController:(UIViewController*)controller atOffset:(int)offset
+{
+	GADBannerView *bannerView_ = [[GADBannerView alloc]
+								  initWithFrame:CGRectMake(0.0,
+                                                           offset - GAD_SIZE_320x50.height,
+                                                           GAD_SIZE_320x50.width,
+                                                           GAD_SIZE_320x50.height)];
+	
+	bannerView_.adUnitID = @"a14ea6df6106823";
+	bannerView_.rootViewController = controller;
+	[controller.view addSubview:bannerView_];
+	
+	GADRequest *request = [GADRequest request];
+#ifdef DEBUG
+	request.testDevices = [NSArray arrayWithObjects:
+						   GAD_SIMULATOR_ID,                                           // Simulator
+						   nil];
+#endif 
+	
+	[bannerView_ loadRequest:request];
+	[bannerView_ release];
+}
 
 
 #pragma mark -

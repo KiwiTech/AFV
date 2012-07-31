@@ -13,10 +13,12 @@
 #import "VideoDetailViewController.h"
 #import "MoviePlayerViewController.h"
 #import "FavoritesDB.h"
+#import "AFVAppDelegate.h"
 
 @implementation FavoritesViewController
 
 @synthesize items;
+@synthesize tableView;
 
 #pragma mark -
 #pragma mark Helper methods
@@ -36,12 +38,15 @@
     [super viewDidLoad];
 
 	self.items = [self getFavorites];
-	//self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+	[AFVAppDelegate insertAdInController:self atOffset:369];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+
 	self.items = [self getFavorites];
 	[self.tableView reloadData];
 }
@@ -76,7 +81,7 @@
 	{
 		if(indexPath.row == 2)
 		{
-			LoadingCell *cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
+			LoadingCell *cell = (LoadingCell*)[self.tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
 			if (cell == nil) {
 				
 				NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"LoadingCell" owner:nil options:nil];
@@ -96,7 +101,7 @@
 			return cell;
 		}
 		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:emptyCellIdentifier];
+		UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:emptyCellIdentifier];
 		if (cell == nil) {
 			
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:emptyCellIdentifier] autorelease];
@@ -109,7 +114,7 @@
 	}
 	else
 	{
-		VideoItemCell *cell = (VideoItemCell*)[tableView dequeueReusableCellWithIdentifier:videoItemCellIdentifier];
+		VideoItemCell *cell = (VideoItemCell*)[self.tableView dequeueReusableCellWithIdentifier:videoItemCellIdentifier];
 		if (cell == nil) {
 			
 			NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"VideoItemCell" owner:nil options:nil];
@@ -152,9 +157,9 @@
 		 self.items = [self getFavorites];
 		
 		if(items.count > 0)
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 		else {
-			[tableView reloadData];
+			[self.tableView reloadData];
 		}
 
 		

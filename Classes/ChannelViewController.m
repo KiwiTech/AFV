@@ -13,6 +13,8 @@
 #import "VideoItem.h"
 #import "VideoDetailViewController.h"
 #import "SBJSON.h"
+#import "AFVAppDelegate.h"
+#import "FlurryAnalytics.h"
 
 #define load_increments		15
 
@@ -29,6 +31,7 @@
 @synthesize items;
 @synthesize channelID;
 @synthesize videoCount;
+@synthesize tableView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -36,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [FlurryAnalytics logEvent:[NSString stringWithFormat:@"PAGE_VIEW:%@",self.navigationItem.title]];
+    
     self.items = [[NSMutableArray alloc] init];
 	
 	if(items.count == 0)
@@ -64,8 +69,15 @@
 		[self asyncDataReady];
 	}
 
+    [AFVAppDelegate insertAdInController:self atOffset:369];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+}
 
 #pragma mark -
 #pragma mark Data loading and parsing
@@ -124,6 +136,10 @@
                 
                       
                 NSDictionary *videoDict = [videoFeedArray objectAtIndex:i];
+                
+                if([[[[videoDict objectForKey:@"app$control"] objectForKey:@"yt$state"] objectForKey:@"name"] isEqualToString:@"restricted"]) {
+                    continue;
+                }
                 
                 VideoItem* videoItem = [[VideoItem alloc] init];
                 videoItem.title = [[[videoDict objectForKey:@"media$group"] objectForKey:@"media$title"] objectForKey:@"$t"];
@@ -201,7 +217,7 @@
 	{
 		if(indexPath.row == 2)
 		{
-			LoadingCell *cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
+			LoadingCell *cell = (LoadingCell*)[self.tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
 			if (cell == nil) {
 				
 				NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"LoadingCell" owner:nil options:nil];
@@ -232,7 +248,7 @@
 			return cell;
 		}
 		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:emptyCellIdentifier];
+		UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:emptyCellIdentifier];
 		if (cell == nil) {
 			
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:emptyCellIdentifier] autorelease];
@@ -247,7 +263,7 @@
 	{
 		if(items.count > 0 && indexPath.row == items.count)
 		{
-			LoadingCell *cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
+			LoadingCell *cell = (LoadingCell*)[self.tableView dequeueReusableCellWithIdentifier:loadingCellIdentifier];
 			if (cell == nil) {
 				
 				NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"LoadingCell" owner:nil options:nil];
@@ -279,7 +295,7 @@
 		}
 		else
 		{
-			VideoItemCell *cell = (VideoItemCell*)[tableView dequeueReusableCellWithIdentifier:videoItemCellIdentifier];
+			VideoItemCell *cell = (VideoItemCell*)[self.tableView dequeueReusableCellWithIdentifier:videoItemCellIdentifier];
 			if (cell == nil) {
 				
 				NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"VideoItemCell" owner:nil options:nil];
@@ -315,7 +331,7 @@
 
 	if(items.count == 0)
 	{
-		LoadingCell* cell = (LoadingCell*)[tableView cellForRowAtIndexPath:indexPath];
+		LoadingCell* cell = (LoadingCell*)[self.tableView cellForRowAtIndexPath:indexPath];
 		if([cell isKindOfClass:[LoadingCell class]])
 		{
 			if(!loadingData)
@@ -331,13 +347,13 @@
 				[NSThread detachNewThreadSelector:@selector(asynchDataDownloadThread) toTarget:self withObject:nil];
 			}
 			
-			[tableView deselectRowAtIndexPath:indexPath animated:YES];
+			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 		}
 		
 	}
 	else
 	{
-		LoadingCell* cell = (LoadingCell*)[tableView cellForRowAtIndexPath:indexPath];
+		LoadingCell* cell = (LoadingCell*)[self.tableView cellForRowAtIndexPath:indexPath];
 		if([cell isKindOfClass:[LoadingCell class]])
 		{
 			if(!loadingData)
@@ -352,12 +368,12 @@
 				[NSThread detachNewThreadSelector:@selector(asynchDataDownloadThread) toTarget:self withObject:nil];
 			}
 			
-			[tableView deselectRowAtIndexPath:indexPath animated:YES];
+			[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 		}
 		else
 		{
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //			VideoItem* item = [self.items objectAtIndex:indexPath.row];
 //			MoviePlayerViewController* moviePlayer = [[MoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:item.videoUrl]];

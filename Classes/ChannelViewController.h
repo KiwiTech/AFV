@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "VideoItemCell.h"
 
-@interface ChannelViewController : UITableViewController<VideoItemCellDelegate> {
+@interface ChannelViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,VideoItemCellDelegate> {
 
+    UITableView* tableView;
 	NSMutableArray* items;
 	NSString* channelID;
 	int videoCount;
@@ -21,6 +22,7 @@
 
 }
 
+@property(nonatomic,retain) IBOutlet UITableView* tableView;
 @property(nonatomic, retain) NSMutableArray* items;
 @property(nonatomic, retain) NSString* channelID;
 @property(nonatomic, assign) int videoCount;

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ChannelsViewController : UITableViewController {
+@interface ChannelsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource> {
 
+    UITableView* tableView;
 	NSMutableArray* channels;
 	
 	@private
@@ -18,6 +19,7 @@
 
 }
 
+@property(nonatomic,retain) IBOutlet UITableView* tableView;
 @property(nonatomic, retain) NSMutableArray* channels;
 
 @end

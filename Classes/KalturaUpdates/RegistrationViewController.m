@@ -47,6 +47,8 @@
 {
     [super viewDidLoad];
         
+     [AFVAppDelegate insertAdInController:self atOffset:369];
+    
     m_datePicker.maximumDate = [NSDate date];
     isRemembered = NO;
         
@@ -56,7 +58,7 @@
     self.m_sBirthDate = [dateFormatter stringFromDate:[NSDate date]];
     [dateFormatter release];
     
-    m_scrollView.contentSize = CGSizeMake(320.0, 700.0);
+    m_scrollView.contentSize = CGSizeMake(320.0, 750.0);
     m_tableView.backgroundColor =[UIColor whiteColor];
     
     [m_tableView.layer setCornerRadius:2.0];

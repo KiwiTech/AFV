@@ -25,6 +25,8 @@
 	BOOL shouldPresentVideoDetailView;
 	UploadVideoDetailViewController* uploadVideoDetailViewController;
     RegistrationViewController* regViewController;
+    
+    int videoSource;
 }
 
 @property(nonatomic, retain) IBOutlet UIButton* loginButton;

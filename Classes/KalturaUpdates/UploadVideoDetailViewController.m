@@ -12,6 +12,7 @@
 #import "UploadConfirmationViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "KalturaMetadataClientPlugin.h"
+#import "FlurryAnalytics.h"
 
 @implementation UploadVideoDetailViewController
 
@@ -27,6 +28,7 @@
 @synthesize videoThumbnail;
 @synthesize videoFileURL;
 @synthesize userData;
+@synthesize videoSource;
 
 //@synthesize cancelButton;
 //@synthesize postRequest;
@@ -162,6 +164,9 @@
         NSDictionary *contentDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"", titleTextField.text, descriptionTextView.text, @"", [self.videoFileURL path], nil] forKeys:[NSArray arrayWithObjects:@"category", @"title", @"description", @"tags", @"path", nil]];
         
 		[self performSelector:@selector(uploadProcess:) withObject:contentDict afterDelay:0.2];
+        
+        // Post source to Flurry
+		[FlurryAnalytics logEvent:[NSString stringWithFormat:@"VIDEO_SOURCE:%@",(videoSource == Camera)?@"Camera":@"Album"]];
 	}
 	else { // handle input errors
 		

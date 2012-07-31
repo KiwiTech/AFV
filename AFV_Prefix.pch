@@ -45,3 +45,9 @@ width=\"%0.0f\" height=\"%0.0f\"></embed>\
 #else
 #define DLog(...)
 #endif
+
+enum VideoSource {
+	Camera,
+	Album
+};
+
